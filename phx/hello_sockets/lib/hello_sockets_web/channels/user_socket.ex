@@ -2,10 +2,10 @@ defmodule HelloSocketsWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", HelloSocketsWeb.RoomChannel
   channel "ping", HelloSocketsWeb.PingChannel
-  channel "wild:*", HelloSocketsWeb.WildcardChannel
   channel "ping:*", HelloSocketsWeb.PingChannel
+  channel "wild:*", HelloSocketsWeb.WildcardChannel
+
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
   # verification, you can put default assigns into
