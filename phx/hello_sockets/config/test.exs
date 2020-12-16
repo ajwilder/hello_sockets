@@ -8,3 +8,4 @@ config :hello_sockets, HelloSocketsWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+config :statix, HelloSockets.Statix, port: 8127
