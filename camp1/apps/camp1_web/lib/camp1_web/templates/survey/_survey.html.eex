@@ -1,0 +1,8 @@
+<section class="survey-wrapper" id="surveySection">
+  <div class="survey" id="surveyItems">
+    <%= for {camp, i} <- Enum.with_index(@camps) do %>
+      <%= render "_survey_item.html", camp: camp, i: i  %>
+
+    <% end %>
+  </div>
+</section>

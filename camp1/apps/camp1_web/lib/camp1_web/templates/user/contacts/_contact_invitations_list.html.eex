@@ -1,0 +1,32 @@
+<div class=user-home-contacts-invitations>
+  <div class="invitations-list">
+    <h4>
+      Sent By You
+    </h4>
+    <%= case @data.sent_invitations do %>
+      <% [] -> %>
+        There are no pending invitations awaiting response from others at this time.
+      <% invitations -> %>
+        <%= for invite <- invitations do %>
+          <div class="contact-invitation">
+            You invited <%= if invite.email, do: invite.email, else: invite.handle %> to contact on <%= invite.inserted_at %>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="invitations-list">
+    <h4>
+      Received by You
+    </h4>
+    <%= case @data.received_invitations do %>
+      <% [] -> %>
+        There are no pending invitations for you to respond to at this time.
+      <% invitations -> %>
+        <%= for invite <- invitations do %>
+          <div class="contact-invitation">
+            You were invited by <%= if invite.email, do: invite.email, else: invite.handle %>  to contact on <%= invite.inserted_at %>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

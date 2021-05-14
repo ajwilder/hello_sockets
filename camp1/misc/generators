@@ -1,0 +1,61 @@
+mix phx.gen.auth Accounts User users
+
+mix phx.gen.html Topics Post posts type:string parent_id:integer status:string current_content:string original_content:string
+
+mix phx.gen.context Slugs ExposedSlug exposed_slugs slug:string topic_id:references:posts
+
+mix phx.gen.schema Topics.PostParents post_parents post_id:references:posts parent_id:references:posts
+
+mix phx.gen.context Reactions Rating ratings post_id:references:posts user_id:references:users value:integer
+
+## 2.9.21 ##
+mix phx.gen.schema Topics.PostAlternate post_alternates post_id:references:posts alternate_id:references:posts
+mix phx.gen.schema Topics.PostReason post_reasons post_id:references:posts reason_id:references:posts
+mix phx.gen.context Topics Subject subjects content:string parent_id:references:posts
+mix ecto.gen.migration delete_post_parents_add_suject_id_to_posts
+mix ecto.gen.migration add_opposition_id_to_posts
+
+## 2.17.21 ##
+
+mix phx.gen.schema Accounts.UserData user_data data:map
+
+## 2.18.21 ##
+mix phx.gen.schema Accounts.UserContact user_contacts user_id:references:users contact_id:references:users
+
+
+## 2.22.21 ##
+mix phx.gen.schema Public.TribeData tribe_data tribe_id:references:tribes general_data:map
+
+## 2.25.21 ##
+mix phx.gen.schema Reputation.Contribution contributions tribe_id:references:tribes user_id:references:users value:integer
+mix phx.gen.schema Reputation.Handle handles tribe_id:references:tribes user_id:references:users value:string
+
+## 3.2.21 ##
+mix phx.gen.schema Board.Comment comments content:string user_id:references:users tribe_id:references:tribes
+mix phx.gen.schema Reactions.Vote votes comment_id:references:comments user_id:references:users value:integer
+
+## 3.9.21 ##
+mix phx.gen.schema TribeChat.TribeMessage tribe_messages content:string user_id:references:users tribe_id:references:tribes
+
+## 3.12.21 ##
+mix phx.gen.schema Public.Image images size:integer hash:string
+mix phx.gen.schema Public.ImageRelationship image_relationships image_id:references:images other_id:bigint type:string
+
+## 3.25.21 ##
+mix phx.gen.schema Private.PrivateChat private_chats name:string
+mix phx.gen.schema Private.PrivateChatUserRelationship private_chat_user_relationships user_id:references:users private_chat_id:references:private_chats
+mix phx.gen.schema Private.PrivateMessage private_messages content:string user_id:references:users private_chat_id:references:private_chats
+mix phx.gen.schema Private.Handle handles private_chat_id:references:private_chats user_id:references:users value:string
+mix phx.gen.schema Invitations.ChatInvitation chat_invitations inviter_id:references:users user_id:references:users private_chat_id:references:private_chats
+mix phx.gen.schema Invitations.ContactInvitation contact_invitations inviter_id:references:users user_id:references:users
+mix phx.gen.schema Invitations.ContactInvitation contact_invitations inviter_id:references:users user_id:references:users
+mix phx.gen.schema Invitations.AppInvitation app_invitations inviter_id:references:users email:string
+
+
+## 5.10.21 ##
+mix phx.gen.schema Manifesto.Record manifesto_records content:string tribe_id:references:tribes user_id:references:users status:string
+mix phx.gen.schema Manifesto.ManifestoVote manifesto_votes manifesto_record_id:references:manifesto_records user_id:references:users value:integer
+
+mix phx.gen.schema Lexicon.Entry lexicon_entries word:string definition:string tribe_id:references:tribes
+mix phx.gen.schema Lexicon.Edit lexicon_edits lexicon_entry_id:references:lexicon_entries user_id:references:users deleted_chars:string inserted_chars:map status:string
+mix phx.gen.schema Lexicon.LexiconVote lexicon_votes lexicon_edit_id:references:lexicon_edits user_id:references:users value:integer

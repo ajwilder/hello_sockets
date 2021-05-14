@@ -1,0 +1,16 @@
+<div class="camp-board camp-main-expand-main"  id="campMainBoard">
+  <div class="camp-main-top">
+    <div class="camp-board-top-div">
+      <div class="camp-board-top-div-comment">
+        You are viewing a single thread
+      </div>
+      <div class="camp-board-back">
+        <a href="/camp/<%= @data.camp_id %>?1=board&2=<%= @data.board_type %>">
+          <button >Back to Board</button>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <%= render("users/board/_user_board_single_post.html", @data) %>
+</div>

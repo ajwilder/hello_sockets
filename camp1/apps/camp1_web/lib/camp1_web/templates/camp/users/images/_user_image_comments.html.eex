@@ -1,0 +1,41 @@
+<%= if @board_data.next_page == 1 do %>
+  <div class="camp-board camp-board-comments campBoardComments<%= @board_data.parent_id %>" data-parent-id=<%= @board_data.parent_id %>>
+<% end %>
+  <%= case @board_data.posts do %>
+  <% [] -> %>
+    <div>
+      No comments to display
+    </div>
+  <% posts -> %>
+    <%= for post <- posts do %>
+      <div class=camp-board-post id="campBoardPost<%= post[:id] %>">
+        <div class="camp-board-post-points">
+          <span id="campBoardPoints<%= post[:id] %>"><%= post[:points] %></span>
+        </div>
+        <div class="camp-board-post-content">
+          <a href="/camp/<%= @board_data.camp_id %>?1=board&2=<%= post[:id] %>">
+            <%= post[:content] %>
+          </a>
+        </div>
+        <div class="camp-board-post-handle">
+          posted_by <%= post[:user_handle] %>
+          inserted_at <%= post[:inserted_at] %>
+        </div>
+        <div class="camp-board-post-comments">
+          <button class="button-small imageBoardComments" data-post-id="<%= post[:id] %>"><%= if post[:comment_count] == nil, do: "Load", else: post[:comment_count] %> comment<%= if post[:comment_count] != 1, do: "s" %></button>
+          <button class="button-small imageBoardCreateComment" data-post-id="<%= post[:id] %>"> Comment</button>
+          <button class="button-small imageBoardVote <%= get_agree_button_classes(@user_vote_data[post.id]) %>" data-value=1 data-post-id="<%= post[:id] %>"  id="agree<%= post[:id] %>"> Agree<%= if @user_vote_data[post.id] == 1, do: "d" %></button>
+          <button class="button-small imageBoardVote <%= get_disagree_button_classes(@user_vote_data[post.id]) %>" data-value=-1 data-post-id="<%= post[:id] %>"  id="disagree<%= post[:id] %>"> Disagree<%= if @user_vote_data[post.id] == -1, do: "d" %></button>
+        </div>
+        <div class="camp-board-form hidden" id="imageBoardPostForm<%= post[:id] %>">
+
+        </div>
+      </div>
+    <% end %>
+    <%= if length(posts) == 20 do %>
+      <button class="button-small loadMoreComments" data-page="<%= @board_data.next_page %>" data-post="<%= @board_data.parent_id %>" id="loadMoreComments<%= @board_data.parent_id %>">Load More Comments</button>
+    <% end %>
+  <% end %>
+<%= if @board_data.next_page == 1 do %>
+  </div>
+<% end %>

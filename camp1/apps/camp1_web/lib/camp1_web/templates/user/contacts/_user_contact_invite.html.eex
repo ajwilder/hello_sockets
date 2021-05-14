@@ -1,0 +1,23 @@
+<div class="user-home-contacts-invite"  id="userContactsMain">
+  <div class="user-home-top-div">
+    <h3>Invite People to Contact With You</h3>
+  </div>
+  <div class="user-home-contacts-invite-form">
+    <div class="contact-invite-field">
+      <label>Your Name</label>
+      <input name="your_name" id="contactInviteYourName" type=text value="<%= @data.handle %>" />
+    </div>
+    <div class="contact-invite-field">
+      <label>Their Email</label>
+      <input name="their_email" required id="contactInviteTheirEmail"  type=email />
+      <span id="contactInviteEmailError"></span>
+    </div>
+    <div  class="contact-invite-field submit_div">
+      <button id="contactInviteSubmit">Send Invite</button>
+    </div>
+  </div>
+  <div class="user-home-contacts-invited" id="userContactsSentInvitations">
+
+  </div>
+
+</div>

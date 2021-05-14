@@ -1,0 +1,3 @@
+<div class="camp-subcamps-list" id="subcampsList">
+  <%= render "users/_camp_list.html", camps: @camps %>
+</div>

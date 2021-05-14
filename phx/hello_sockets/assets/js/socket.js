@@ -43,11 +43,11 @@ import {Socket} from "phoenix"
 //   .receive("timeout", (resp) => console.log("invalid event timeout"))
 //
 //
-const authSocket = new Socket("/auth_socket",{
-  params: { token: window.authToken}
-})
-authSocket.onOpen(() => console.log('authSocket connected'))
-authSocket.connect()
+// const authSocket = new Socket("/auth_socket",{
+//   params: { token: window.authToken}
+// })
+// authSocket.onOpen(() => console.log('authSocket connected'))
+// authSocket.connect()
 
 
 // const recurringChannel = authSocket.channel("recurring")
@@ -105,11 +105,20 @@ authSocket.connect()
 // console.log("5 parallel slow pings requested");
 
 
-const authUserChannel = authSocket.channel(`user:${window.userID}`)
-authUserChannel.on("push", (payload) => {
-  console.log("received auth user push", payload);
+// const authUserChannel = authSocket.channel(`user:${window.userID}`)
+// authUserChannel.on("push", (payload) => {
+//   console.log("received auth user push", payload);
+// })
+// authUserChannel.on("push_timed", (payload) => {
+//   console.log("received auth user push", payload);
+// })
+// authUserChannel.join()
+
+const trackedSocket = new Socket("/auth_socket",{
+  params: { token: window.authToken}
 })
-authUserChannel.on("push_timed", (payload) => {
-  console.log("received auth user push", payload);
-})
-authUserChannel.join()
+trackedSocket.onOpen(() => console.log('trackedSocket connected'))
+trackedSocket.connect()
+
+const trackerChannel = trackedSocket.channel("tracked")
+trackerChannel.join()

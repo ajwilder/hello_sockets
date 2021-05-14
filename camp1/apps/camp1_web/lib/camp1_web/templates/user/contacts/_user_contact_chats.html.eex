@@ -1,0 +1,14 @@
+
+<div class="user-home-chat-invite user-home-contacts-contact-options" id="contactListContact<%= @contact %>">
+  <%= case length(@chats) do %>
+    <% 0 -> %>
+      No chats to display
+    <% _ -> %>
+      <%= for chat <- @chats do %>
+        <div>
+          <%= chat.name %> <button class="button-small openChatButton" data-popup="true" data-chat=<%= chat.id %>>Open Chat</button>
+        </div>
+      <% end %>
+    <% end %>
+
+</div>

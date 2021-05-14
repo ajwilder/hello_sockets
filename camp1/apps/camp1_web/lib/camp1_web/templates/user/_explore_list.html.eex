@@ -1,0 +1,19 @@
+<%= case @data.camps do %>
+  <% [] -> %>
+    End of camp list. Try search if you're having trouble finding an old camp.
+  <% camps ->  %>
+    <%= for camp <- camps do %>
+      <div class="user-home-camps-camp">
+        <div>
+          <%= camp.current_content %>
+        </div>
+        <div>
+          created: <%= camp.created %>
+        </div>
+        <a href="/camp/<%= camp.id %>">Explore</a>
+      </div>
+    <% end %>
+    <%= if length(camps) == 20 do %>
+      <button class="button-small loadMoreCamps" data-page="<%= @data.next_page %>" data-type="<%= @data.type %>"  id="loadMoreCamps">Load More</button>
+    <% end %>
+<% end %>

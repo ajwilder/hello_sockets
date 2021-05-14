@@ -1,0 +1,24 @@
+<section class="camp-top">
+  <h1><%= limit_title @camp.current_content %></h1>
+  <div class="camp-top-parent">
+    <%= if @camp.subject.parent_id do %>
+      <div>
+        <%= @camp.subject.parent.content %> >> <%= @camp.subject.content %>
+      </div>
+    <% else %>
+      <div>
+        <%= @camp.subject.content %>
+      </div>
+    <% end %>
+    <%= if @camp.parent_id  do %>
+      <div>
+        Reason for: <a href="/camp/<%# @camp.parent.id %>"><%= limit_parent @camp.parent.current_content %></a>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="camp-main" id="">
+  <%= render "_camp_nav.html", camp: @camp, expand: @expand, sub_menu: @sub_menu, subsub_menu: @subsub_menu %>
+  <%= render(select_camp_template(@expand), sub_menu: @sub_menu, subsub_menu: @subsub_menu, data: @data) %>
+</section>

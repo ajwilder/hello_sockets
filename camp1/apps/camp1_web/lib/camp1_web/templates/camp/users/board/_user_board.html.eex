@@ -1,0 +1,65 @@
+<div class="camp-board camp-main-expand-main"  id="campMainBoard">
+  <div class="camp-main-top">
+    <div class="camp-board-top-div">
+      <div >
+        <div class="camp-board-select">
+          Show: <select id="messageBoardSelectType" data-board_type=<%= @data.board_type %>>
+            <option selected value="recent">
+              Most Recent
+            </option>
+            <option value="top">
+              Highest Voted
+            </option>
+            <option value="controversial">
+              Lowest Voted
+            </option>
+          </select>
+        </div>
+        <div class="camp-board-select camp-board-select-range" id="messageBoardSelectRangeDiv">
+          From: <select class="" data-board_type=<%= @data.board_type %> id="messageBoardSelectRange">
+            <option  value="today">
+              Today
+            </option>
+            <option value="yesterday">
+              Yesterday
+            </option>
+            <option  value="this_week">
+              This Week
+            </option>
+            <option selected value="all_time">
+              All Time
+            </option>
+            <option  value="day">
+              Another Day
+            </option>
+            <option  value="week">
+              Another Week
+            </option>
+          </select>
+          <input type="date" id="boardRangeDateInput" />
+        </div>
+      </div>
+
+      <div class="camp-board-create_post">
+        <%= case @data.board_type do %>
+          <%= :posts -> %>
+            <button data-board_type="posts"  id="messageBoardCreatePost">Post To This Board</button>
+          <%= :images -> %>
+            <button data-board_type="images" id="imageBoardCreatePost">Upload Image</button>
+          <%= :documents -> %>
+            <button data-board_type="documents"  id="documentBoardCreatePost">Upload Document</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= case @data.board_type do %>
+    <%= :posts -> %>
+      <%= render("users/board/_user_board_create_post.html") %>
+    <%= :images -> %>
+      <%= render("users/board/_user_board_create_image.html") %>
+    <%= :documents -> %>
+      <%= render("users/board/_user_board_create_document.html") %>
+  <% end %>
+
+  <%= render("users/board/_user_board_posts.html", @data) %>
+</div>

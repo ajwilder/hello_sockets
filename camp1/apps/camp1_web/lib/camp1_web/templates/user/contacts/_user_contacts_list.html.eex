@@ -1,0 +1,24 @@
+<div id="userContactsMain">
+  <div class="user-home-top-div">
+    <h3>Contacts</h3>
+    <div class=user-home-select>
+      Sort by: <select id="userContactsSelect">
+        <option value="added" <%= if @data.type == :added, do: "selected=true" %>>
+          Recently Added
+        </option>
+        <option value="recent" <%= if @data.type == :chatted, do: "selected=true" %>>
+          Recently Chatted
+        </option>
+        <option value="alpha">
+          Alphabetical
+        </option>
+      </select>
+      <input type="date" id="anotherDateInput" />
+    </div>
+    <div class="user-home-search">
+      Search: <input id="userContactsSearch" type="text" />
+    </div>
+  </div>
+  <%= render("contacts/_contacts_list.html", %{data: @data.contacts}) %>
+
+</div>

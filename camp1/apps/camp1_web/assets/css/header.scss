@@ -1,0 +1,141 @@
+
+.header-logo {
+    margin: 0.1rem;
+}
+
+.header-logo img {
+    width: auto;
+    display: block;
+    margin: 0.4rem 0;
+}
+
+/* Headers */
+header {
+  width: 100%;
+  background: #fdfdfd;
+  border-bottom: 1px solid #eaeaea;
+  z-index: 10;
+  position: relative;
+  overflow: visible;
+  a {
+    cursor: pointer;
+  }
+}
+
+header section {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+header section > *:last-child {
+  white-space: nowrap;
+  text-align: right;
+}
+header section nav.header-nav {
+  position: relative;
+}
+
+
+header nav a {
+  display: block;
+}
+
+header section div.header-title {
+  text-align: center;
+}
+
+header {
+  section {
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      color: black;
+    }
+  }
+}
+header section h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: black;
+}
+header section h2 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: black;
+}
+header section h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: black;
+}
+header nav ul,
+header nav li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+}
+header nav ul {
+  margin: 0.5rem;
+}
+
+
+header nav .navigation-dropdown-link {
+  margin: 1rem;
+  div.arrow-down {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-top: 0.3rem solid #f00;
+  }
+}
+
+ul.navigation-dropdown {
+  display: block;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+  background: #fdfdfd;
+  border: 1px solid #eaeaea;
+  height: auto;
+  position: absolute;
+  right: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 8;
+  top: -3rem;
+  transition: top 0.5s;
+  border-radius: 4px;
+  li {
+    padding: 1rem;
+    list-style: none;
+    margin: 0;
+    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+  }
+}
+ul.navigation-dropdown.active {
+  overflow: visible;
+  top: 3.5rem;
+}
+ul.navigation-dropdown.guest-menu {
+  top: -4rem;
+
+}
+ul.navigation-dropdown.guest-menu.active {
+  top: 4rem;
+}
+@media (min-width: 40.0rem) {
+ /* Small devices (landscape phones, 576px and up) */
+
+    header nav ul {
+
+    }
+
+    .header-logo {
+
+    }
+}

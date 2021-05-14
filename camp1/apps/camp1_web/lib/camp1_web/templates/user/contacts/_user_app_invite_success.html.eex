@@ -1,0 +1,4 @@
+<div class="processed_invite">
+  <%= @invitation.email %> successfully invited to contact with you.
+  <a href="/home?1=contacts&2=invitations">See Contact Invites</a>
+</div>

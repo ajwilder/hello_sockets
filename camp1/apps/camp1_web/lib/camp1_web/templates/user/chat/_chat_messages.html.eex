@@ -1,0 +1,38 @@
+<%= case length(@messages) do %>
+<% 20 -> %>
+  <button data-chat="<%= @id %>" class="loadPriorChatMessages" id="loadPriorChatMessages<%= @id %>">Load prior messages</button>
+<% 1 -> %>
+
+<% _ -> %>
+  <%= case @init do %>
+    <% true -> %>
+
+    <% _ -> %>
+      End of messages
+    <% end %>
+<% end %>
+<%= for message <- Enum.reverse(@messages) do %>
+  <%= case message.type do %>
+    <% nil -> %>
+      <div class="chat-widget-window-message privateChatMessage<%= @id %>">
+        <div>
+          <%= message.handle %>
+        </div>
+        <div>
+          <%= message.inserted_at %>
+        </div>
+        <div>
+          <%= message.content %>
+        </div>
+      </div>
+    <%= :admin -> %>
+      <div class="chat-widget-window-message chat-widget-window-message-admin privateChatMessage<%= @id %>">
+        <div>
+          <%= message.inserted_at %>
+        </div>
+        <div>
+          <%= message.content %>
+        </div>
+      </div>
+  <% end %>
+<% end %>

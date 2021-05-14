@@ -1,0 +1,28 @@
+<%= for invite <- @invitations do %>
+  <%= case invite.status do %>
+    <% :accepted -> %>
+      <div class="chat-invitation">
+        <%= invite.user_handle %> agreed to chat with you <button class="button-small openChatButton" data-chat=<%= invite.private_chat_id %>>Open Chat</button>
+        <button data-chat="<%= invite.private_chat_id %>" class="button-small userChatInviteDetails"  id="chatInvitationDetails<%= invite.private_chat_id %>">See Chat Details</button>
+
+      </div>
+    <% :declined -> %>
+      <div class="chat-invitation" id="chatInvitation<%= invite.id %>">
+        <%= invite.user_handle %> declined to chat with you.
+      </div>
+    <% :pending -> %>
+      <%= case invite.private_chat_id do %>
+        <% nil -> %>
+          <div class="chat-invitation">
+            You invited <%= invite.user_handle %> to a new chat on <%= invite.inserted_at %>
+            status: <%= invite.status %>
+          </div>
+        <%= private_chat_id -> %>
+          <div class="chat-invitation">
+            You invited <%= invite.user_handle %> to an existing chat on <%= invite.inserted_at %>
+            status: <%= invite.status %>
+            <button data-chat="<%= private_chat_id %>" class="button-small userChatInviteDetails"  id="chatInvitationDetails<%= private_chat_id %>">See Chat Details</button>
+          </div>
+      <% end %>
+  <% end %>
+<% end %>

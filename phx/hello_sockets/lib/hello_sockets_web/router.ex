@@ -17,6 +17,7 @@ defmodule HelloSocketsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/tracked", PageController, :tracked
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,11 @@
+<div class=""  id="userCampDiv">
+  <div class="camp-main-top">
+    <h2>Join This Camp</h2>
+  </div>
+  <div>
+    <p>
+      You are not currently part of this camp.  
+    </p>
+    <button>Join This Camp</button>
+  </div>
+</div>

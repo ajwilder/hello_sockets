@@ -1,0 +1,9 @@
+<div class="camp-overview-alternates">
+  <h2>Alternates <button class="disabled-button hover-text" data-hoverText="Log in to alternatives for this camp">Contribute</button></h2>
+  <%= for alternate <- @camp.children do %>
+    <div class="camp-overview-alternates-alternate">
+      <%= alternate.current_content %>
+      <a href="/g/camp/<%= alternate.id %>">Explore</a>
+    </div>
+  <% end %>
+</div>

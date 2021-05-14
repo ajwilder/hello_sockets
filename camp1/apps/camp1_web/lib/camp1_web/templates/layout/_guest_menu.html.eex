@@ -1,0 +1,21 @@
+
+<header>
+  <section class="container">
+    <a href="/" class="header-logo">
+      <img src="<%= Routes.static_path(@conn, "/images/logo60.png") %>"  alt="CampSmith Logo"/>
+    </a>
+    <div class="header-title">
+      <a href="/" class="header-h2">
+        <h2>CampSmith</h2>
+      </a>
+      <!-- <h3>Find your people</h3> -->
+    </div>
+    <nav role="navigation">
+      <a id="navigationDropdownLink" class="navigation-dropdown-link">Settings ▾</a>
+    </nav>
+  </section>
+</header>
+<ul class="navigation-dropdown guest-menu" id="navigationDropdown">
+  <li><%= link "Log in", to: Routes.user_session_path(@conn, :new) %></li>
+  <li><%= link "Register", to: Routes.user_registration_path(@conn, :new) %></li>
+</ul>

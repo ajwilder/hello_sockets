@@ -1,0 +1,22 @@
+<div class="camp-opponents camp-main-expand-main "  data-action="opponents" id="campMainOverview">
+  <div class="camp-opponents-list">
+    <div class="camp-main-top">
+      <h2>Opponents</h2>
+    </div>
+    <ol class="camp-opponents-list-list">
+      <%= for {opponent, i} <- Enum.with_index(@data.top_opponents) do %>
+        <%= if i == 0 do %>
+          <li class="camp-opponents-list-opponent selected-opponent" data-opponent_id="<%= opponent[:id] %>">
+            <%= opponent[:current_content] %>
+          </li>
+        <% else %>
+          <li class="camp-opponents-list-opponent unselected-opponent"  data-opponent_id="<%= opponent[:id] %>">
+            <%= opponent[:current_content] %>
+          </li>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>
+  <%= render("users/_user_opponent_details.html", opponent_view: @data.opponent_view) %>
+
+</div>

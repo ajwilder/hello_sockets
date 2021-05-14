@@ -1,0 +1,25 @@
+<div class="camp-board-form" id="boardForm<%= @comment_id %>">
+  <%= form_for @changeset, "/camp/#{@camp_id}/create-post", [multipart: true, class: "camp-board-form-form"], fn f -> %>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    <% end %>
+    <input type="hidden" value="<%= Phoenix.Controller.get_csrf_token() %>" name="_csrf_token"/>
+    <%= if @comment_id do %>
+      <%= hidden_input f, :parent_id, value: @comment_id %>
+    <% end %>
+
+    <%= textarea f, :content, placeholder: "What do you want to say?", required: true %>
+    <%= error_tag f, :content %>
+
+
+    <div>
+      <%= if @comment_id do %>
+        <%= submit "Comment" %>
+      <% else %>
+        <%= submit "Post" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

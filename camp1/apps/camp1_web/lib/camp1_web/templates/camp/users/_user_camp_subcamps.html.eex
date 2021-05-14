@@ -1,0 +1,4 @@
+<div class="camp-overview" id="userCampDiv">
+  <%= render("users/_user_subcamps.html", data: @data) %>
+
+</div>

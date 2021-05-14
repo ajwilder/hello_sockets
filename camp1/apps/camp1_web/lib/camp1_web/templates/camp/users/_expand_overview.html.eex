@@ -1,0 +1,10 @@
+<div id="campMainExpand" class="camp-main-expand">
+  <div class="camp-main-expand-nav">
+    <h3>Overview >></h3>
+    <button class="campOverviewNav <%= if @sub_menu == nil || @sub_menu == "activity", do: "active" %>" data-action="activity" data-location="campMainOverview">Activity</button>
+    <button class="campOverviewNav <%= if @sub_menu == "subcamps", do: "active" %>" data-action="subcamps" data-location="campMainOverview">SubCamps</button>
+    <button class="campOverviewNav <%= if @sub_menu == "opponents", do: "active" %>" data-action="opponents" data-location="campMainOverview">Opponents</button>
+    <button class="campOverviewNav <%= if @sub_menu == "compare", do: "active" %>" data-action="compare" data-location="campMainOverview">Compare</button>
+  </div>
+  <%= render(select_overview_template(@sub_menu, @subsub_menu), data: @data) %>
+</div>

@@ -1,0 +1,17 @@
+<% type = @data.board_data[:type] %>
+<div class="camp-board"  id="userCampDiv">
+  <div class="camp-main-top">
+    <h2>Image <%= if @data.board_data.comment.parent_id, do: "Comment", else: "Post" %></h2>
+    <div class="camp-board-top-div">
+      <div class="camp-board-top-div-comment">
+        You are viewing comments on an image
+      </div>
+      <div class="camp-board-back">
+        <a href="/camp/<%= @data.camp_id %>?1=images">
+          <button >Back to Images</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <%= render("users/images/_user_board_single_image.html", %{ board_data: @data.board_data, camp_id: @data.camp_id, user_vote_data: @data.user_vote_data}) %>
+</div>

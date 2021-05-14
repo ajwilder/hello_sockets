@@ -1,0 +1,14 @@
+<div id="campMainExpand" class="camp-main-expand camp-main-expand-basic">
+  <div class="camp-main-top">
+    <h2>Manage</h2>
+  </div>
+  <div class="camp-main-expand-basic-main">
+    <div class="manage-setting">
+      <h4>Edit Your Settings</h4>
+    </div>
+    <div class="manage-setting">
+      <h4>Leave this camp</h4>
+    </div>
+  </div>
+
+</div>

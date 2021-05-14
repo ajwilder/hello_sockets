@@ -1,0 +1,76 @@
+<%= if @camp[:opposition_id] != nil do %>
+  <% prompts = prompts_by_type(@camp[:camp_type]) %>
+  <div class="survey-item survey-item-opposition <%= if @i == 0, do: "active" %> <%= if @i == "next", do: "next" %>">
+    <div class="survey-item-title">
+      <p id="topicContent-<%= @camp[:opposition_id] %>"><%= @camp[:opposition_content] %></p>
+      <div class="opposition-button-div">
+        <button
+          data-id=<%= @camp[:opposition_id] %>
+          data-value=5
+          data-type=<%= @camp[:opposition_type] %>
+          class="button-camp_survey"
+          >
+          Agree
+        </button>
+      </div>
+    </div>
+    <div class="survey-item-title">
+      <p id="topicContent-<%= @camp[:camp_id] %>"><%= @camp[:camp_content] %></p>
+      <div class="opposition-button-div">
+        <button
+          data-id=<%= @camp[:camp_id] %>
+          data-value=5
+          data-type=<%= @camp[:camp_type] %>
+          class="button-camp_survey"
+          >
+          Agree
+        </button>
+      </div>
+    </div>
+    <div class="survey-item-ratings">
+      <div class="survey-item-ratings-row">
+        <%= for {prompt, i} <- Enum.with_index(prompts[:dismissal_prompts]) do %>
+          <button
+            data-id=<%= @camp[:camp_id] %>
+            data-value=<%= prompt |> elem(1) %>
+            class="button-camp_survey"
+            >
+            <%= prompt |> elem(0) %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="survey-item <%= if @i == 0, do: "active" %>">
+    <div class="survey-item-title">
+      <p id="topicContent-<%= @camp[:camp_id] %>"><%= @camp[:camp_content] %></p>
+    </div>
+    <% prompts = prompts_by_type(@camp[:camp_type]) %>
+    <div class="survey-item-ratings">
+      <div class="survey-item-ratings-row">
+        <%= for {prompt, i} <- Enum.with_index(prompts[:rating_prompts]) do %>
+          <button
+            data-id=<%= @camp[:camp_id] %>
+            data-value=<%= i %>
+            data-type=<%= @camp[:camp_type] %>
+            class="button-camp_survey"
+            >
+            <%= prompt %>
+          </button>
+        <% end %>
+      </div>
+      <div class="survey-item-ratings-row">
+        <%= for {prompt, i} <- Enum.with_index(prompts[:dismissal_prompts]) do %>
+          <button
+            data-id=<%= @camp[:camp_id] %>
+            data-value=<%= prompt |> elem(1) %>
+            class="button-camp_survey"
+            >
+            <%= prompt |> elem(0) %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

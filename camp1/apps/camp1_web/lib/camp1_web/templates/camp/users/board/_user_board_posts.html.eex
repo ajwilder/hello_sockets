@@ -1,0 +1,57 @@
+
+<%= if @next_page == 1 do %>
+  <div class="camp-board-posts" id="campBoardPosts">
+<% end %>
+  <%= case @posts do %>
+    <% [] -> %>
+      <div>
+        Nothing to display
+      </div>
+    <% posts -> %>
+      <%= for post <- posts do %>
+        <div class="camp-board-post" id="campBoardPost<%= post[:id] %>">
+          <div class="camp-board-image" id="imageBoardImage<%= post[:id] %>">
+          </div>
+          <div class="camp-board-post-points">
+            <span id="campBoardPoints<%= post[:id] %>"><%= post[:points] %></span>
+          </div>
+          <div class="camp-board-post-content">
+            <a href="/camp/<%= @camp_id %>?1=board&2=<%= @board_type %>&3=<%= post[:id] %>">
+              <%= post[:content] %>
+            </a>
+          </div>
+          <div class="camp-board-post-image_thumbnail">
+            <%= if post[:image_id] do
+              img_tag "/image/#{post[:image_id]}/thumbnail", class: "messageBoardDisplayImage", data: [imageid: post[:image_id], postid: post[:id]]
+            end %>
+          </div>
+          <div class="camp-board-post-handle">
+            posted_by <%= post[:user_handle] %>
+            inserted_at <%= post[:inserted_at] %>
+          </div>
+          <div class="camp-board-post-comments">
+            <button class="button-small messageBoardComments" data-post-id="<%= post[:id] %>" data-board_type=<%= @board_type %>><%= if post[:comment_count] == nil, do: "Load", else: post[:comment_count] %> comment<%= if post[:comment_count] != 1, do: "s" %></button>
+            <%= if post[:image_id] do %>
+              <button class="button-small messageBoardDisplayImage" id="messageBoardDisplayImage<%= post[:image_id] %>" data-postid="<%= post[:id] %>" data-imageid="<%= post[:image_id] %>">Show Image</button>
+            <% end %>
+            <%= if post[:document_id] do %>
+              <a href="/document/<%= post.document_id %>?camp=<%= @camp_id %>" target="_blank">
+                <button class="button-small " id="" data-postid="<%= post[:id] %>" data-imageid="">Get Document</button>
+              </a>
+            <% end %>
+            <button class="button-small messageBoardCreateComment" data-post-id="<%= post[:id] %>"> Comment</button>
+            <button class="button-small messageBoardVote <%= get_agree_button_classes(@user_vote_data[post.id]) %>" data-value=1 data-post-id="<%= post[:id] %>"  id="agree<%= post[:id] %>"> Agree<%= if @user_vote_data[post.id] == 1, do: "d" %></button>
+            <button class="button-small messageBoardVote <%= get_disagree_button_classes(@user_vote_data[post.id]) %>" data-value=-1 data-post-id="<%= post[:id] %>"  id="disagree<%= post[:id] %>"> Disagree<%= if @user_vote_data[post.id] == -1, do: "d" %></button>
+          </div>
+          <div class="camp-board-form hidden" id="messageBoardPostForm<%= post[:id] %>">
+
+          </div>
+        </div>
+      <% end %>
+      <%= if length(posts) == 20 do %>
+        <button class="button-small loadMorePosts" data-page="<%= @next_page %>" data-order_by="<%= @order_by %>" data-board_type=<%= @board_type %> data-date="<%= @date %>" id="loadMorePosts">Load More Posts</button>
+      <% end %>
+  <% end %>
+<%= if @next_page == 1 do %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<header>
+  <section class="container">
+    <a href="/home" class="header-logo">
+      <img src="<%= Routes.static_path(@conn, "/images/logo60.png") %>"  alt="CampSmith Logo"/>
+    </a>
+    <a href="/home" class="header-h2"><h2>CampLife</h2></a>
+    <nav role="navigation" class="header-nav">
+      <a id="navigationDropdownLink" class="navigation-dropdown-link">Settings ▾</a>
+    </nav>
+  </section>
+</header>
+<ul class="navigation-dropdown" id="navigationDropdown">
+  <li><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, id: "logOutLink" %></li>
+</ul>

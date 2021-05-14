@@ -1,0 +1,7 @@
+<div class="processed_invite">
+  We were unable to invite <%= @changeset.changes.email %> to contact with you.
+  <%= if @changeset.errors[:email] != nil do %>
+    You have already invited this person to connect with you: 
+    <a href="/home?1=contacts&2=invitations">See Contact Invites</a>
+  <% end %>
+</div>

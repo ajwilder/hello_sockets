@@ -1,0 +1,4 @@
+<div class="camp-board-post-image" id="imageBoardImage<%= @image_id %>">
+  <%= img_tag "/image/#{@image_id}" %>
+
+</div>

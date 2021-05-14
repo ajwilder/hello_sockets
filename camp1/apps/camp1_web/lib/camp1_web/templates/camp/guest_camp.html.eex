@@ -1,0 +1,24 @@
+<section class="camp-top">
+  <h1><%= limit_title @camp.current_content %></h1>
+  <div class="camp-top-parent">
+    <div>
+      <%= @camp.subject.parent.content %> >> <%= @camp.subject.content %>
+    </div>
+    <%= if @camp.parent && @camp.parent != [] do %>
+      <div>
+        Reason for: <a href="/g/camp/<%= @camp.parent.id %>"><%= limit_parent @camp.parent.current_content %></a>
+      </div>
+    <% end %>
+  </div>
+</section>
+<section class="camp-nav">
+  <button id="campMainNav" class="active">Overview</button>
+  <button  id="campOppositionNav" >Opposition View</button>
+  <button  class="disabled-button hover-text" data-hoverText="Log in to see the message board for this camp" >Message Board</button>
+  <button  class="disabled-button hover-text"  class="hover-text" data-hoverText="Log in to see the chat room for this camp" >Chat Room</button>
+  <button  class="disabled-button hover-text"  class="hover-text" data-hoverText="Log in to see the images for this camp" >Image Gallery</button>
+  <button  class="disabled-button hover-text"  class="hover-text" data-hoverText="Log in to compare this camp to your camps">Compare</button>
+</section>
+<section class="camp-main" id="">
+  <%= render("_guest_overview.html", camp: @camp) %>
+</section>

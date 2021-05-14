@@ -1,0 +1,16 @@
+<div class="user-home-chats" id="userMainDiv">
+  <div class="user-home-top">
+    <div>
+      <button class="<%= if @data.sub_menu == :chats, do: "active" %> userChatsNav" data-nav="chats">Chats</button>
+    </div>
+    <div>
+      <button class="<%= if @data.sub_menu == :invitations, do: "active" %> userChatsNav" id="userChatsNavRequests" data-nav="invitations">Chat Requests</button>
+    </div>
+    <div>
+      <button class="<%= if @data.sub_menu == :invite, do: "active" %> userChatsNav" data-nav="invite">New Chat</button>
+    </div>
+  </div>
+  <%= render(select_user_chats_template(@data.sub_menu), %{data: @data}) %>
+
+
+</div>

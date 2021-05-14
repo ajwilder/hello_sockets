@@ -1,0 +1,6 @@
+<section class="camp1-hero3" id="titleSection">
+  <% first = List.first @guest_survey %>
+  <h1 data-id="<%= first[:parent_id] %>">Survey</h1>
+
+</section>
+<%= render Camp1Web.SurveyView, "_survey.html", camps: @guest_survey, first: first %>

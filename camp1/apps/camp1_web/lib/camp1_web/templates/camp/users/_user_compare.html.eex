@@ -1,0 +1,83 @@
+<%= case @data.compare do %>
+  <% :calculating -> %>
+    <div class="user-compare camp-main-expand-main "  data-action="compare" id="campMainOverview">
+      Comparison map is being calculated.  Check back in a minute.
+    </div>
+  <% compare -> %>
+    <%= case @data.compare_type do %>
+      <%= :camp -> %>
+        <div class="user-compare camp-main-expand-main" data-action="compare" id="campMainOverview">
+          <div class=" camp-main-top">
+            <h2>Compare</h2>
+          </div>
+      <% :user ->  %>
+        <div class="user-compare camp-main-expand-main" data-action="compare" id="campMainOverview">
+          <div class="user-home-top">
+            <h2>Compare</h2>
+            <div class="user-home-top-div">
+              <div></div>
+              <div>
+                <button class="user-nav-link-button button-small"  id="backToContacts"> Back to Contacts</button>
+              </div>
+            </div>
+          </div>
+    <% end %>
+
+    <div class="user-compare-main">
+      <div class="user-compare-text">
+        <%= case @data.compare_type do %>
+          <%= :camp -> %>
+          <p>
+            Here is how you compare to the average user in this camp:
+          </p>
+        <% :user ->  %>
+          <p>
+            Here is how you compare with <%= @data.user %>:
+          </p>
+        <% end %>
+      </div>
+      <%= for statistic <- @data.compare do %>
+        <% subject_id = List.first(Map.keys(statistic)) %>
+        <div class="user-compare-item">
+          <div>
+            <%= @data.subject_names[subject_id] %>:
+          </div >
+          <%= if statistic[subject_id][:agree] == "no data" do %>
+            <div class="user-compare-item-agreement">
+              no data
+            </div>
+            <div>
+
+            </div>
+            <div>
+              <a>Survey</a>
+            </div>
+          <% else %>
+            <div class="user-compare-item-agreement<%= if statistic[subject_id][:agree] > 0.5 do %>
+              agree
+              <% else %>
+              disagree
+              <% end %>"
+            >
+              <%= round(statistic[subject_id][:agree] * 100) %>%
+            </div>
+            <div>
+              basis: <%= statistic[subject_id][:total_count] %> camp<%= if statistic[subject_id][:total_count] == 1, do: "", else: "s" %>
+            </div>
+            <div>
+              <%# TODO: load survey of camps relevant to this camp in this subject %>
+              <a>Survey More</a>
+            </div>
+          <% end %>
+
+
+        </div>
+      <% end %>
+      <div class="user-compare-textend">
+        <%# TODO: load survey of camps relevant to this camp %>
+        <button>Survey More Camps</button>
+      </div>
+    </div>
+
+  </div>
+<% end %>

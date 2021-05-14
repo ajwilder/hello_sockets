@@ -1,0 +1,6 @@
+<div class="camp-overview">
+  <%= render("_guest_stats.html", camp: @camp) %>
+  <%= render("_guest_reasons.html", camp: @camp) %>
+  <%= render("_guest_alternatives.html", camp: @camp) %>
+
+</div>

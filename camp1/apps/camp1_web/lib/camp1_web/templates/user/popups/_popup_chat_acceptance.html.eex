@@ -1,0 +1,3 @@
+<div class="popupMessage" id="chatAcceptancePopup<%= @invitation.private_chat_id %>">
+  <%= @invitation.inviter_handle %> accepted your request to chat <button class="button-small openChatButton" data-popup="true" data-chat=<%= @invitation.private_chat_id %>>Open Chat</button>
+</div>

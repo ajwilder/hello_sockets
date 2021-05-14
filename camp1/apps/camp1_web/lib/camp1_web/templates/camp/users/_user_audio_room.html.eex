@@ -1,0 +1,37 @@
+<div class="camp-discussion-audio camp-main-expand-main"  id="campMainDiscussion">
+  <!-- <div class="camp-main-top">
+    <h2>Audio Chat</h2>
+  </div> -->
+  <%= if @data.audio_status.live == true do %>
+    <div class="camp-discussion-audio-div">
+      <h3>Current Status</h3>
+      Audio discussion is live with <%= @data.audio_status.members %> people actively talking!
+      <div>
+        <button data-camp="<%= @data.camp_id %>" id="listenIn">Listen In</button>
+      </div>
+      <div>
+        <button  data-camp="<%= @data.camp_id %>"  id="joinAudioChat">Join The Discussion</button>
+      </div>
+      <div>
+        <button  data-camp="<%= @data.camp_id %>"  id="stopStream">Stop The Stream</button>
+      </div>
+    </div>
+  <% else %>
+    <div  class="camp-discussion-audio-div">
+      <h3>Current Status</h3>
+      No one is currently talking. Start the discussion below and maybe someone will join you.
+      <div>
+        <button  data-camp="<%= @data.camp_id %>" id="startTheDiscussion">Start The Discussion</button>
+      </div>
+    </div>
+  <% end %>
+  <%= if @data.audio_status.best_of == true do %>
+    <div  class="camp-discussion-audio-div">
+      <h3>Top Rated Audio Excerpts</h3>
+      <div>
+        5 minute clip from March 4th, 2021, with 5 members chatting:
+        <button  data-camp="<%= @data.camp_id %>"  class="pastExcerpt">Listen</button>
+      </div>
+    </div>
+  <% end %>
+</div>

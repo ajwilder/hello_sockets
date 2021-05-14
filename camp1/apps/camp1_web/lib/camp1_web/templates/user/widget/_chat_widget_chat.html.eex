@@ -1,0 +1,16 @@
+<div class="chat-widget-chat" id="chatWidgetChat<%= @chat.id %>">
+  <div class="chat-widget-chat-name" id="chatWidgetChatName<%= @chat.id %>">
+    <span class="chatName<%= @chat.id %>"><%= @chat.name %></span>
+    <%= case @chat[:missed_messages] do %>
+      <% nil -> %>
+        <% :ok %>
+      <% message_count -> %>
+        <div class="chat-widget-chat-notification" id="chatWidgetChatNotification<%= @chat.id %>">
+          <%= message_count %>
+        </div>
+    <% end %>
+  </div>
+  <div class="chat-widget-chat-open">
+    <button class="button-small openChatButton" data-chat=<%= @chat.id %>>Open</button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div id="userContactsList">
+  <%= case length(@data) do %>
+    <% 0 -> %>
+      No contacts to display
+    <% _ -> %>
+      <%= for contact <- @data do %>
+        <div class="user-home-contacts-contact" >
+          <div>
+            <%= contact.contact_name %> <%= contact.id %>
+          </div>
+          <div>
+            <button data-contact="<%= contact.contact_obfs_id %>" class="contactCompareButton button-small optionsButtons<%= contact.contact_obfs_id %>" data-action="Comparison">Compare</button>
+            <button data-contact="<%= contact.contact_obfs_id %>" class="contactChatButton button-small optionsButtons<%= contact.contact_obfs_id %>" data-action="Invitation">New Chat</button>
+            <button data-contact="<%= contact.contact_obfs_id %>" class="contactChatsButton button-small optionsButtons<%= contact.contact_obfs_id %>" data-action="Chats">See Chats</button>
+          </div>
+          <div class="user-home-contacts-contact-options" id="contactListContact<%= contact.contact_obfs_id %>"></div>
+        </div>
+      <% end %>
+  <% end %>
+</div>

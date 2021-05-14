@@ -1,0 +1,7 @@
+<div id="userContactsMain">
+  <div class="user-home-top-div">
+    <h3>Contact Invitations</h3>
+  </div>
+  <%= render("contacts/_contact_invitations_list.html", %{data: @data}) %>
+
+</div>

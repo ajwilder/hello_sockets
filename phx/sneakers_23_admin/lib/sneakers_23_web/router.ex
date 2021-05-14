@@ -30,4 +30,15 @@ defmodule Sneakers23Web.Router do
     post "/checkout", CheckoutController, :purchase
     get "/checkout/complete", CheckoutController, :success
   end
+
+  pipeline :admin do
+    plug BasicAuth, use_config: {:sneakers_23, :admin_auth}
+    plug :put_layout, {Sneakers23Web.LayoutView, :admin}
+  end
+
+  scope "/admin", Sneakers23Web.Admin do
+    pipe_through [:browser, :admin]
+
+    get "/", DashboardController, :index
+  end
 end

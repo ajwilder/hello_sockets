@@ -1,0 +1,22 @@
+<%= case length(@camps) do %>
+  <% 0 -> %>
+    No camps to display
+  <% _ -> %>
+    <%= for camp <- @camps do %>
+      <div class="camp-list-camp">
+        <%= camp.current_content %>
+        <div class="camp-list-camp-details">
+          <div>
+            Members: <%= camp.member_count %>
+          </div>
+          <div>
+            Opponents: <%= camp.opponent_count %>
+          </div>
+          <div>
+            Created: <%= Date.to_string NaiveDateTime.to_date camp.inserted_at %>
+          </div>
+        </div>
+        <a href="/g/camp/<%= camp.id %>">Explore</a>
+      </div>
+    <% end %>
+<% end %>

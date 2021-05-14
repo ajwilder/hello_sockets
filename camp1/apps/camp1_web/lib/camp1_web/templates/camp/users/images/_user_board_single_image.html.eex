@@ -1,0 +1,33 @@
+
+<div class="camp-board-post" id="campBoardPost<%= @board_data.comment[:id] %>">
+  <div class="camp-board-image" id="imageBoardImage<%= @board_data.comment[:id] %>">
+  </div>
+  <div class="camp-board-post-points">
+    <span id="campBoardPoints<%= @board_data.comment[:id] %>"><%= @board_data.comment[:points] %></span>
+  </div>
+  <div class="camp-board-post-content">
+    <%= @board_data.comment[:content] %>
+  </div>
+  <div class="camp-board-post-image_thumbnail">
+    <%= if @board_data.comment[:image_id] do
+      img_tag "/image/#{@board_data.comment[:image_id]}/thumbnail", class: "imageBoardDisplayImage", data: [imageid: @board_data.comment[:image_id], postid: @board_data.comment[:id]]
+    end %>
+  </div>
+  <div class="camp-board-post-handle">
+    posted_by <%= @board_data.comment[:user_handle] %>
+    inserted_at <%= @board_data.comment[:inserted_at] %>
+  </div>
+  <div class="camp-board-post-comments">
+    <%= if @board_data.comment[:image_id] do %>
+      <button class="button-small imageBoardDisplayImage" id="imageBoardDisplayImage<%= @board_data.comment[:image_id] %>" data-postid="<%= @board_data.comment[:id] %>" data-imageid="<%= @board_data.comment[:image_id] %>">Show Image</button>
+    <% end %>
+    <button class="button-small imageBoardCreateComment" data-post-id="<%= @board_data.comment[:id] %>"> Comment</button>
+    <button class="button-small imageBoardVote" data-value=1 data-post-id="<%= @board_data.comment[:id] %>"  id="agree<%= @board_data.comment[:id] %>"  > Agree</button>
+    <button class="button-small imageBoardVote" data-value=-1 data-post-id="<%= @board_data.comment[:id] %>"  id="disagree<%= @board_data.comment[:id] %>"> Disagree</button>
+  </div>
+  <div class="camp-board-form hidden" id="imageBoardPostForm<%= @board_data.comment[:id] %>">
+
+  </div>
+  <%= render("users/images/_user_image_comments.html", %{board_data: %{posts: @board_data.posts, next_page: 1, parent_id: @board_data.parent_id, camp_id: @camp_id}, user_vote_data: @user_vote_data}) %>
+
+</div>

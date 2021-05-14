@@ -1,0 +1,14 @@
+<div class=""  id="userCampDiv">
+  <div class="camp-main-top">
+    <h2>Opponents</h2>
+  </div>
+  <div>
+    <p>
+      This camp currently has no opponents.
+    </p>
+    <%= if !@agreement do %>
+      <button>Oppose This Camp</button>
+    <% end %>
+  </div>
+
+</div>

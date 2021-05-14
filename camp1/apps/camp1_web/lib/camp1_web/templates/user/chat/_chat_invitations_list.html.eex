@@ -1,0 +1,25 @@
+<div class=user-home-chats-invitations>
+  <div class="invitations-list">
+    <h4>
+      Sent By You
+    </h4>
+    <%= case @data.sent_invitations do %>
+      <% [] -> %>
+        You have not invited anyone to chat.
+      <% invitations -> %>
+        <%= render("chat/_chat_sent_invitations.html", invitations: invitations) %>
+    <% end %>
+
+  </div>
+  <div class="invitations-list">
+    <h4>
+      Received By You
+    </h4>
+    <%= case @data.received_invitations do %>
+      <% [] -> %>
+        There are no pending chat requests for you to respond to at this time.
+      <% invitations -> %>
+        <%= render("chat/_chat_received_invitations.html", invitations: invitations) %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<%= case length(@messages) do %>
+<% 20 -> %>
+  <button id="campChatLoadPriorMessages">Load prior messages</button>
+<% 1 -> %>
+  
+<% _ -> %>
+  End of messages
+<% end %>
+<%= for message <- Enum.reverse(@messages) do %>
+  <div class="camp-chat-message campChatMessage">
+    <div>
+      <%= message.handle %>
+    </div>
+    <div>
+      <%= message.inserted_at %>
+    </div>
+    <div>
+      <%= message.content %>
+    </div>
+  </div>
+<% end %>

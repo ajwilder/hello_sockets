@@ -1,0 +1,7 @@
+<div class="user-home-chats-chat-edit" id="chatEditForm<%= @chat.id %>">
+  <label>New Name:</label>
+  <input type="text" value="<%= @chat.name %>" id="chatEditNameInput<%= @chat.id %>" />
+  <button data-chat="<%= @chat.id %>"  class="button-small chatEditSubmit" id="chatEditSubmit<%= @chat.id %>">
+    Save
+  </button>
+</div>

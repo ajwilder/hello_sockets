@@ -1,0 +1,23 @@
+<div id="userChatsMain">
+  <div class="user-home-top-div">
+    <h3>Chats</h3>
+    <div class=user-home-select>
+      Sort by: <select id="userChatsSelect">
+        <option value="recent">
+          Recently Active
+        </option>
+        <option value="created">
+          Date Created
+        </option>
+        <option value="alpha">
+          Alphabetical
+        </option>
+      </select>
+    </div>
+    <div class="user-home-search">
+      Search: <input type="text" id="userChatsSearch" />
+    </div>
+  </div>
+  <%= render("chat/_chats_list.html", %{data: @data}) %>
+
+</div>

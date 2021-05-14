@@ -1,0 +1,11 @@
+<div class="user-home-nav">
+  <h2>Home</h2>
+  <button class="user-nav-link-button <%= if @expand == nil || @expand == "activity", do: "active" %>" id="userHomeActivity">Activity</button>
+  <button class="user-nav-link-button <%= if @expand == "home_explore", do: "active" %>" id="userHomeExplore">Explore</button>
+  <button class="user-nav-link-button <%= if @expand == "your_camps", do: "active" %>"  id="userHomeCamps">Camps</button>
+  <!-- <button class="user-nav-link-button  <%= if @expand == "private", do: "active" %>"  id="userHomePrivate">Private Camps</button> -->
+  <!-- <button class="user-nav-link-button  <%= if @expand == "survey", do: "active" %>"  id="userHomeSurvey">Take Survey</button> -->
+  <button class="user-nav-link-button  <%= if @expand == "chat", do: "active" %>"  id="userHomeChat">Chat</button>
+  <button class="user-nav-link-button <%= if @expand == "contacts", do: "active" %>"  id="userHomeContacts"> Contacts</button>
+  <button class="user-nav-link-button  <%= if @expand == "camp_form", do: "active" %>"  id="userHomeCampForm">Create Camp</button>
+</div>

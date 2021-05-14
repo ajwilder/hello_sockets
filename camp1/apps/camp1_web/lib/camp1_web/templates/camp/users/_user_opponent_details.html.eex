@@ -1,0 +1,38 @@
+<div class="camp-opponents-details" id="CampOpponentViewDetails">
+  <div class="opponent-detail-item top-item">
+    <div class="camp-main-top">
+      <h2>This Camp</h2>
+    </div>
+    <div  class="middle-div">
+      vs.
+    </div>
+    <div class="camp-main-top">
+      <h2>Opponent Camp</h2>
+    </div>
+  </div>
+  <%= for {reasons, i} <- Enum.with_index(@opponent_view) do  %>
+    <div class="opponent-detail-item <%= if i == 0 do "main-content" end %>">
+      <div class="this-camp-content">
+        <% camp_reason = elem(reasons, 0) %>
+        <%= if camp_reason do %>
+          <%= camp_reason[:current_content] %>
+        <% else %>
+          <button>Create Reason to Oppose This</button>
+        <% end %>
+      </div>
+      <div class="middle-div">
+        ⬌
+      </div>
+      <div class="opp-camp-content">
+        <% opp_reason = elem(reasons, 1) %>
+        <%= if opp_reason do %>
+          <%= opp_reason[:current_content] %>
+        <% else %>
+          <button>Create Reason to Oppose This</button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>

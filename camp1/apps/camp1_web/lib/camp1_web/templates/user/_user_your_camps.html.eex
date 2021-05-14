@@ -1,0 +1,25 @@
+<div class="user-home-camps" id="userMainDiv">
+  <div class="user-home-top">
+    <h2>Your Camps</h2>
+    <div class="user-home-top-div">
+      <div class=user-home-select>
+        Sort by: <select id="userYourCampsSelect">
+          <option value = "recent">
+            Recently Viewed
+          </option>
+          <option value = "joined">
+            Date Joined
+          </option>
+          <option value = "created">
+            Date Created
+          </option>
+        </select>
+        <input type="date" id="anotherDateInput" />
+      </div>
+      <div class="user-home-search">
+        Search: <input type="text" />
+      </div>
+    </div>
+  </div>
+  <%= render("_user_camps_list.html", %{data: @data}) %>
+</div>

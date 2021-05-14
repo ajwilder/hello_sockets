@@ -1,0 +1,38 @@
+
+<div class="camp-board-post" id="campBoardPost<%= @post[:id] %>">
+  <div class="camp-board-image" id="imageBoardImage<%= @post[:id] %>">
+  </div>
+  <div class="camp-board-post-points">
+    <span id="campBoardPoints<%= @post[:id] %>"><%= @post[:points] %></span>
+  </div>
+  <div class="camp-board-post-content">
+    <%= @post[:content] %>
+  </div>
+  <div class="camp-board-post-image_thumbnail">
+    <%= if @post[:image_id] do
+      img_tag "/image/#{@post[:image_id]}/thumbnail", class: "messageBoardDisplayImage", data: [imageid: @post[:image_id], postid: @post[:id]]
+    end %>
+  </div>
+  <div class="camp-board-post-handle">
+    posted_by <%= @post[:user_handle] %>
+    inserted_at <%= @post[:inserted_at] %>
+  </div>
+  <div class="camp-board-post-comments">
+    <%= if @post[:image_id] do %>
+      <button class="button-small messageBoardDisplayImage" id="messageBoardDisplayImage<%= @post[:image_id] %>" data-postid="<%= @post[:id] %>" data-imageid="<%= @post[:image_id] %>">Show Image</button>
+    <% end %>
+    <%= if @post[:document_id] do %>
+      <a href="/document/<%= @post.document_id %>?camp=<%= @camp_id %>" target="_blank">
+        <button class="button-small " id="" data-postid="<%= @post[:id] %>" data-imageid="">Get Document</button>
+      </a>
+    <% end %>
+    <button class="button-small messageBoardCreateComment" data-post-id="<%= @post[:id] %>"> Comment</button>
+    <button class="button-small messageBoardVote <%= get_agree_button_classes(@user_vote_data[@post.id]) %>" data-value=1 data-post-id="<%= @post[:id] %>"  id="agree<%= @post[:id] %>"> Agree<%= if @user_vote_data[@post.id] == 1, do: "d" %></button>
+    <button class="button-small messageBoardVote <%= get_disagree_button_classes(@user_vote_data[@post.id]) %>" data-value=-1 data-post-id="<%= @post[:id] %>"  id="disagree<%= @post[:id] %>"> Disagree<%= if @user_vote_data[@post.id] == -1, do: "d" %></button>
+  </div>
+  <div class="camp-board-form hidden" id="messageBoardPostForm<%= @post[:id] %>">
+
+  </div>
+  <%= render("users/board/_user_board_comments.html", %{posts: @comments, next_page: 1, parent_id: @post.id, camp_id: @camp_id, user_vote_data: @user_vote_data, board_type: @board_type}) %>
+
+</div>

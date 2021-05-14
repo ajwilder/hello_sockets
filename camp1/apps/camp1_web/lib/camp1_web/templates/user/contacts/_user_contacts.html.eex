@@ -1,0 +1,30 @@
+<div class="user-home-contacts" id="userMainDiv">
+  <%= if @data.contacts == [] do %>
+  <div class="user-home-top">
+    <div class="your-contacts">
+      <div>
+        <h2>Your Contacts</h2>
+      </div>
+    </div>
+    <div>
+      <p>
+        You don't have any contacts. You can invite people by entering their email address here:
+      </p>
+      <input type=text />
+      <button>Invite</button>
+    </div>
+  <% else %>
+    <div class="user-home-top">
+      <div>
+        <button class="<%= if @data.sub_menu == :contacts, do: "active" %> userContactsNav" id=""  data-nav="contacts">Contacts</button>
+      </div>
+      <div>
+        <button class="<%= if @data.sub_menu == :invitations, do: "active" %> userContactsNav" id="" data-nav="invitations">Contact Invitations</button>
+      </div>
+      <div>
+        <button class="<%= if @data.sub_menu == :invite, do: "active" %> userContactsNav" id="" data-nav="invite">Invite Contacts</button>
+      </div>
+    </div>
+    <%= render(select_user_contacts_template(@data.sub_menu), %{data: @data}) %>
+  <% end %>
+</div>

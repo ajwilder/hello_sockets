@@ -1,0 +1,26 @@
+<section class="results-combined">
+
+</section>
+<section class="results">
+  <%= for topic  <- @topics do %>
+    <% percentage = percentage(topic[:like_minded], topic[:total_surveyed]) %>
+    <div class="results-topic">
+      <div class="results-topic-camp" >
+        <div class="results-topic-count" draggable="true" data-id=<%= topic[:id] %> data-rating=<%= topic[:rating] %>>
+          <%= topic[:like_minded] %><span data-id=<%= topic[:id] %> data-rating=<%= topic[:rating] %>>people</span>
+        </div>
+        <div class="results-topic-agreement">
+           also <%= result_display(topic[:type], topic[:rating])  %>
+        </div>
+      </div>
+      <div class="results-topic-topic">
+        <div class="results-topic-content">
+          <%= topic[:content] %>
+        </div>
+        <div class="results-topic-explore">
+          <a>Explore this topic</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,38 @@
+<% type = @data[:type] %>
+<div class="camp-board camp-main-expand-main"  id="campMainBoard">
+  <div class="camp-main-top">
+    <h2>Images</h2>
+    <div class="camp-board-top-div">
+      <div class="camp-board-select">Showing Images From: <select id="imageBoardSelect">
+          <option <%= if type == :recent, do: "selected" %> value="recent">
+            Most Recent
+          </option>
+          <option <%= if type == :today, do: "selected" %>  value="today">
+            Today
+          </option>
+          <option <%= if type == :yesterday, do: "selected" %>  value="yesterday">
+            Yesterday
+          </option>
+          <option  value="this_week">
+            This Week
+          </option>
+          <option <%= if type == :all_time, do: "selected" %> value="all_time">
+            All Time
+          </option>
+          <option  value="another_day">
+            Another Day
+          </option>
+          <option  value="another_week">
+            Another Week
+          </option>
+        </select>
+        <input type="date" id="anotherDateInput" />
+      </div>
+      <div class="camp-board-create_post">
+        <button id="imageBoardCreatePost">Upload Image</button>
+      </div>
+    </div>
+  </div>
+  <%= render("users/images/_user_board_create_image.html") %>
+  <%= render("users/images/_user_image_posts.html", @data) %>
+</div>

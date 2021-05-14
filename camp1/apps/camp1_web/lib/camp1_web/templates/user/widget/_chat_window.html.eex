@@ -1,0 +1,19 @@
+<div class="chat-widget-window" id="chatWidgetChatWindow" data-chat="<%= @data.id %>">
+  <div class="chat-window-name">
+    <span class="chatName<%= @data.id %>"><%= @data.name %></span>
+  </div>
+  <div class="chat-window-stats">
+    <%= length(Map.keys(@data.handles)) %> People in this chat
+  </div>
+  <div class="chat-widget-window-messages" id="chatWidgetMessages<%= @data.id %>">
+    <%= render("chat/_chat_messages.html", messages: @data.messages, id: @data.id, init: true) %>
+  </div>
+  <div class="chat-widget-window-input">
+    <div class="chat-widget-window-input-div">
+      <textarea placeholder="Say something" data-chat="<%= @data.id %>" id="chatWidgetInput"/></textarea>
+    </div>
+    <div class="chat-widget-windowt-input-submit">
+      <button data-chat="<%= @data.id %>" id="chatWidgetInputSubmit">Submit</button>
+    </div>
+  </div>
+</div>

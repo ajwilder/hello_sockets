@@ -1,0 +1,95 @@
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+<%= if @data.manifesto do %>
+  <div class="camp-main-expand-main camp-main-manifesto"  id="campMainManifesto">
+    <div class="camp-main-top" id="manifestoTopDiv">
+      This version of the manifesto was approved on <%= @data.manifesto.approved_at %>.  It was preceded by <%= length @data.history %> other version<%= if length(@data.history) > 1, do: "s" %>.
+        <%= if @data.proposed do %>
+          <button id="viewProposal">View Proposed Changes</button>
+          <button class="hidden" id="backToCurrent">View Current Manifesto</button>
+        <% else %>
+          <button id="manifestoEdit">Propose A Change</button>
+        <% end %>
+        <%= if @data.manifesto.previous_id do %>
+          <button id="viewHistory">View Change History</button>
+        <% end %>
+    </div>
+    <div class="" id="manifestoMainDiv">
+      <div class="hidden change_log-container" id="historyLog">
+        <p>
+          Change History
+        </p>
+        <div class="camp-main-manifesto-change_log">
+          <%= for {record, i} <- Enum.with_index(@data.history) do %>
+            <button  class="change_log-version manifestoVersionSelect" data-version="<%= record.id %>" >
+              Version <%= i + 1 %> <br />
+              <%= date_string record.approved_at %>
+            </button>
+          <% end %>
+          <button class="change_log-version active manifestoVersionSelect" id="currentVersionLog" data-version=<%= @data.manifesto.id %>>
+            Current Version <br />
+            <%=  date_string @data.manifesto.approved_at %>
+          </button>
+
+        </div>
+      </div>
+      <div  class="manifesto-display" id="editor">
+        <%= raw @data.manifesto.content %>
+      </div>
+      <div  class="manifesto-display hidden" id="alternateContent">
+        <%= raw @data.manifesto.content %>
+      </div>
+      <%= if @data.proposed do %>
+        <% agreement = parse_manifesto_vote_data(@data.votes[@data.proposed.id]) %>
+        <div class="hidden" id="proposedChange">
+          Please agree or disagree with this proposed change below:
+          <div class="manifesto-display">
+            <%= raw @data.proposed.content %>
+            <div class="manifesto-vote">
+              <button class="manifestoVote <%= if agreement == 1, do: "active" %>" data-version="<%= @data.proposed.id %>" data-value="1" >Agree</button>
+              <button class="manifestoVote <%= if agreement == -1, do: "active" %>" data-value="-1" data-version="<%= @data.proposed.id %>">Disagree</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <button class="hidden" id="submitManifesto">Submit</button>
+    </div>
+  </div>
+<% else %>
+  <%= if !@data.proposed do %>
+    <div class="camp-main-expand-main camp-main-manifesto"  id="campMainManifesto">
+      <div class="camp-main-top">
+
+      </div>
+      <div class="">
+        <p  class="no-manifesto" id="noManifesto">
+          This camp does not have a manifesto yet.
+          <button id="createManifesto">Propose a manifesto</button>
+        </p>
+        <div id="editor">
+        </div>
+        <button class="hidden" id="submitManifesto">Submit</button>
+      </div>
+    </div>
+  <% else %>
+    <div class="camp-main-expand-main camp-main-manifesto"  id="campMainManifesto">
+      <div class="camp-main-top">
+
+      </div>
+      <div class="">
+        <p class="no-manifesto" id="noManifesto">
+          Someone has proposed the following manifesto, please agree or disagree below:
+        </p>
+        <div class="manifesto-display">
+          <%= raw @data.proposed %>
+          <div class="manifesto-vote">
+            <button>Agree</button>
+            <button>Disagree</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

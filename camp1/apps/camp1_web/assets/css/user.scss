@@ -1,0 +1,363 @@
+#userHomeHero {
+  transition: padding margin height 1s;
+  overflow: hidden;
+  &.deactivated {
+    padding: 0;
+    margin: 0;
+    height: 0;
+  }
+}
+.user-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+  .user-home-top {
+    border-bottom: 1px solid $lightlightgrey;
+    display: grid;
+    margin-bottom: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-bottom: 0.5rem;
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
+    button {
+      &.active {
+        background-color: $lightblue;
+        border-color: $lightblue;
+      }
+    }
+  }
+  .user-home-top-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid $lightlightgrey;
+    h2, h3, h4 {
+      margin: 0;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    input {
+      margin: 0;
+    }
+    select {
+      margin: 0;
+    }
+    .user-home-select {
+      select {
+        width: auto;
+        padding: 0.3rem 3rem 0.3rem 1rem;
+        height: auto;
+      }
+      input[type='date'] {
+        width: auto;
+        padding: 0.3rem;
+        height: auto;
+        display: none;
+        &.active {
+          display: inline;
+        }
+      }
+    }
+  }
+  .user-home-nav {
+    border: 1px solid $lightgrey;
+    padding: 0.5rem;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    h2 {
+      border-bottom: 1px solid $lightlightgrey;
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
+    button.user-nav-link-button {
+      font-size: 1rem;
+      display: block;
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      padding: 0.3rem;
+      line-height: 1rem;
+      &.active {
+        background-color: $lightblue;
+        border-color: $lightblue;
+      }
+    }
+
+  }
+  .user-home-main {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    border: 1px solid $lightgrey;
+    padding: 0.5rem;
+    min-height: 70vh;
+  }
+}
+.user-home-contacts {
+  .your-contacts {
+    display: grid;
+    margin-bottom: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .user-home-contacts-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid $lightlightgrey;
+    .user-home-contacts-contact-options {
+      grid-column-start: 1;
+      grid-column-end: 3
+    }
+  }
+  .user-home-contacts-invitations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    .invitations-list {
+      display: grid;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey;
+      h4 {
+        max-height: 2rem;
+        margin: 0;
+        font-weight: normal;
+        border-bottom: 1px solid $lightlightgrey;
+      }
+    }
+  }
+
+}
+.user-home-contacts-invite {
+  .user-home-contacts-invite-form {
+    display: grid;
+    gap: 0.5rem;
+    width: 90%;
+    margin: 1.5rem auto;
+    .contact-invite-field {
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+      input,label {
+        display: inline;
+        max-width: 75%;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        &.error {
+          border-color: red;
+        }
+      }
+      #contactInviteEmailError {
+        display: block;
+        color: red;
+      }
+
+    }
+  }
+  .user-home-contacts-invited {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    .processed_invite {
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey;
+    }
+  }
+}
+.user-home-chat-invite {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid $lightlightgrey;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  p.chat-invite-success {
+    margin: 0;
+  }
+  .user-home-chat-invite-existing_chats {
+    max-height: 40vh;
+    overflow: scroll;
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    .user-home-contact-existing_chat {
+      padding: 0.2rem;
+    }
+
+  }
+}
+.user-compare {
+  .user-compare-main {
+    display: grid;
+  }
+  .user-compare-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    div:first-child {
+      justify-self: right;
+    }
+    .user-compare-item-agreement {
+      &.agree {
+        color: green
+      }
+      &.disagree {
+        color: red;
+      }
+    }
+
+  }
+  .user-compare-text {
+    margin-top: 0.5rem;
+    p {
+      margin-bottom: 0.5rem
+    }
+  }
+  .user-compare-textend {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+}
+.user-compare-main {
+  display: grid;
+  .user-compare-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    div:first-child {
+      justify-self: right;
+    }
+    .user-compare-item-agreement {
+      &.agree {
+        color: green
+      }
+      &.disagree {
+        color: red;
+      }
+    }
+
+  }
+  .user-compare-text {
+    margin-top: 0.5rem;
+    p {
+      margin-bottom: 0.5rem
+    }
+  }
+  .user-compare-textend {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+}
+
+.user-home-camps {
+  display: grid;
+  gap: 0.5rem;
+  .user-home-camps-camps {
+    display: grid;
+    gap: 0.5rem;
+    .user-home-camps-camp {
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey
+    }
+  }
+}
+.user-home-chats {
+  .user-home-chats-invitations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    .invitations-list {
+      display: grid;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey;
+      h4 {
+        max-height: 2rem;
+        margin: 0;
+        font-weight: normal;
+        border-bottom: 1px solid $lightlightgrey;
+      }
+    }
+  }
+  .user-home-chats-chat {
+    padding: 0.5rem;
+    border: 1px solid $lightlightgrey;
+    position: relative;
+    .user-home-chats-chat-notification {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      color: white;
+      background-color: green;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.7rem;
+      border-radius: 50%;
+    }
+    .user-home-chats-chat-edit {
+      display: grid;
+      gap: 0.5rem;
+      margin: 0.5rem;
+      grid-template-columns: 6rem 1fr 6rem;
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey;
+      input {
+        margin: 0;
+      }
+    }
+  }
+  .user-home-chat-new{
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+    .user-home-chat-new-field {
+      padding: 0.5rem;
+      .new-chat-contacts-list {
+        p {
+          margin: 0;
+          font-style: italic;
+        }
+        &.active {
+          p {
+            display: none;
+          }
+        }
+        .user-home-chat-new-contacts-contact {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+    .user-home-chat-new-submit {
+      display: none;
+      text-align: right;
+      &.active {
+        display: block;
+      }
+    }
+    .user-home-chat-new-contacts {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 1px solid $lightlightgrey;
+      .user-home-chat-new-contacts-contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 0.5rem;
+      }
+      h4 {
+        margin: 0;
+        border-bottom: 1px solid $lightlightgrey;
+      }
+    }
+    input {
+      margin: 0;
+    }
+    label {
+      margin: 0;
+    }
+  }
+}

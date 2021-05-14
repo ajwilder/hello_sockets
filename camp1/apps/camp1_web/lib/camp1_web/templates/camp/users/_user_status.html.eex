@@ -1,0 +1,23 @@
+<div class="camp-overview-stats">
+  <div class="camp-main-top">
+    <h2>Status</h2>
+  </div>
+  <div>
+    Members: <%= @camp.member_count %>
+  </div>
+  <div>
+    Board Posts: <%= @camp.post_count %>
+  </div>
+  <div>
+    Images: <%= @camp.image_count %>
+  </div>
+  <div>
+    Chats Messages: <%= @camp.message_count %>
+  </div>
+  <div>
+    Opponents: <%= @camp.opponent_count %>
+  </div>
+  <div>
+    Subcamps: <%= @camp.child_count %>
+  </div>
+</div>

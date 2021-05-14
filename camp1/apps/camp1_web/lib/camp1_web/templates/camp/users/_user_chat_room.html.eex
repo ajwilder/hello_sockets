@@ -1,0 +1,16 @@
+<div class="camp-chat camp-main-expand-main"  id="campMainDiscussion">
+  <div class="camp-main-top">
+    <h2>Chat</h2>
+  </div>
+  <div class="camp-chat-messages" id="campChatMessages">
+    <%= render("users/_chat_messages.html", messages: @data.messages) %>
+  </div>
+  <div class="camp-chat-input">
+    <div class="camp-chat-input-div">
+      <textarea placeholder="Say something to this camp" id="campChatInput"/></textarea>
+    </div>
+    <div class="camp-chat-input-submit">
+      <button id="campChatInputSubmit">Submit</button>
+    </div>
+  </div>
+</div>

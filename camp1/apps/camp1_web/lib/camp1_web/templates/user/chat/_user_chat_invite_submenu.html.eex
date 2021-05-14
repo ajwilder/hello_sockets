@@ -1,0 +1,38 @@
+<div id="userChatsMain">
+  <div class="user-home-top-div">
+    <h3>New Chat</h3>
+  </div>
+  <div class="user-home-chat-new">
+    <div class="user-home-chat-new-field">
+      <label>Chat Name</label>
+      <input type="text" id="newChatNameInput" placeholder="Name this new chat" />
+    </div>
+    <div class="user-home-chat-new-field">
+      <label>Chat Members</label>
+      <div class="new-chat-contacts-list" id="newChatContactsList">
+        <p>
+          Select people below to add to this chat.
+        </p>
+      </div>
+    </div>
+    <div class="user-home-chat-new-field user-home-chat-new-submit" id="newChatSubmitDiv">
+      <button class="button-small" id="newChatSubmit">Create Chat</button>
+    </div>
+    <div class="user-home-chat-new-contacts" id="contactsList">
+      <h4>Contacts</h4>
+      <%= for contact <- @data.contacts do %>
+        <div data-contact="<%= contact.contact_obfs_id %>" class="user-home-chat-new-contacts-contact" id="newChatContact<%= contact.contact_obfs_id %>" >
+          <div>
+            <%= contact.contact_name %> <%= contact.id %>
+          </div>
+          <div>
+            <button data-contact="<%= contact.contact_obfs_id %>" class="newChatContactAdd button-small">Add</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+
+</div>

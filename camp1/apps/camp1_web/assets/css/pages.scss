@@ -1,0 +1,11 @@
+// Guest home styles
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-gap: 1rem;
+  &-item {
+    text-align: center;
+    margin: 1rem 0;
+  }
+}

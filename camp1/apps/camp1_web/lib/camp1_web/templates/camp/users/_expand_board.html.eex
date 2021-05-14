@@ -1,0 +1,9 @@
+<div id="campMainExpand" class="camp-main-expand">
+  <div class="camp-main-expand-nav">
+    <h3>Board >></h3>
+    <button class="campBoardNav <%= if @sub_menu == nil || @sub_menu == "posts", do: "active" %>" data-action="posts" data-location="campMainBoard">Posts</button>
+    <button class="campBoardNav <%= if @sub_menu == "images", do: "active" %>" data-action="images" data-location="campMainBoard">Images</button>
+    <button class="campBoardNav <%= if @sub_menu == "documents", do: "active" %>" data-action="documents" data-location="campMainBoard">Documents</button>
+  </div>
+  <%= render(select_board_template(@sub_menu, @subsub_menu), data: @data) %>
+</div>

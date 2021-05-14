@@ -1,0 +1,14 @@
+<div class="user-home-chat-invite user-home-contacts-contact-options" id="contactListContact<%= @contact.contact_obfs_id %>">
+  <%= if @chat do %>
+    <div>
+      <button class="button-small openChatButton" data-popup="true" data-chat=<%= @chat.id %>>Open Chat With <%= @contact.contact_name %></button>
+    </div>
+  <% else %>
+    <div>
+      <button id="" class="inviteToNewChat button-small " data-contact="<%= @contact.contact_obfs_id %>">Create New Chat With <%= @contact.contact_name %></button>
+    </div>
+  <% end %>
+  <div>
+    <button id="" class="inviteToExistingChatExpand  button-small" data-contact="<%= @contact.contact_obfs_id %>">Invite <%= @contact.contact_name %> to Existing Chat</button>
+  </div>
+</div>

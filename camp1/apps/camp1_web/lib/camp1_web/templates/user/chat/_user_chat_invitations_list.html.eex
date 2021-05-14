@@ -1,0 +1,7 @@
+<div id="userChatsMain">
+  <div class="user-home-top-div">
+    <h3>Chat Invitations</h3>
+  </div>
+  <%= render("chat/_chat_invitations_list.html", %{data: @data}) %>
+
+</div>

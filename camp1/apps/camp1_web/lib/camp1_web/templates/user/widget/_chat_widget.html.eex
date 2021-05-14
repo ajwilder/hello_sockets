@@ -1,0 +1,34 @@
+<div class="chat-widget <%= if length(@chats) == 0, do: "hidden" %>" id="chatWidget">
+  <div class="chat-widget-icon" id="chatWidgetIcon">
+    Chat
+  </div>
+  <div class="chat-widget-inner" id="chatWidgetInner">
+    <div class="chat-widget-main">
+      <div class="chat-widget-nav">
+        <h5>Chats</h5>
+      </div>
+      <div class="chat-widget-inner-list">
+        <div class="chat-widget-inner-list-chats chat-widget-list active" id="chatWidgetListChats">
+          <%= for chat <- @chats do %>
+            <%= render "widget/_chat_widget_chat.html", chat: chat %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="chat-widget-window" id="chatWidgetChatWindow">
+
+    </div>
+  </div>
+  <div class="chat-widget-close" id="chatWidgetClose">
+    <img src="<%= Routes.static_path(Camp1Web.Endpoint, "/images/close.svg") %>"  alt="Click To Close"/>
+  </div>
+  <%= case @missed_messages do %>
+    <% 0 -> %>
+      <% :ok %>
+    <% missed_messages -> %>
+      <div class="chat-widget-notification" id="chatWidgetNotification">
+        <%= @missed_messages %>
+      </div>
+  <% end %>
+</div>

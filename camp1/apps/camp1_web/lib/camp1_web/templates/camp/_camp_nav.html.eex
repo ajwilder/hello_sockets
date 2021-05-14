@@ -1,0 +1,10 @@
+<div class="camp-main-nav">
+  <h2>Camp Resources</h2>
+  <button class="campMainNav <%= if @expand == nil || @expand == "overview", do: "active" %> <%= if @sub_menu, do: "sub_menu" %>" data-expand="overview" >Overview</button>
+  <button class="campMainNav <%= if @expand == "board", do: "active" %> <%= if @sub_menu, do: "sub_menu" %>" data-expand="board" >Board</button>
+  <button class="campMainNav <%= if @expand == "discussion", do: "active" %> <%= if @sub_menu, do: "sub_menu" %>" data-expand="discussion" >Live Discussion</button>
+  <button class="campMainNav <%= if @expand == "manifesto", do: "active" %> <%= if @sub_menu, do: "sub_menu" %>" data-expand="manifesto" >Manifesto</button>
+  <button class="campMainNav <%= if @expand == "manage", do: "active" %> <%= if @sub_menu, do: "sub_menu" %>" data-expand="manage" >Manage</button>
+  <%= render("users/_user_status.html", camp: @camp) %>
+
+</div>

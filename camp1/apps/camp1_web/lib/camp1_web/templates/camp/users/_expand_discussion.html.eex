@@ -1,0 +1,3 @@
+<div id="campMainExpand" class="camp-main-expand">
+  <%= render(select_discussion_template(@sub_menu, @subsub_menu), data: @data) %>
+</div>

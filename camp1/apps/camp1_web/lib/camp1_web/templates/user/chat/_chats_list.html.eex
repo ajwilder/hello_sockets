@@ -1,0 +1,25 @@
+<%= case length(@data.chats) do %>
+  <% 0 -> %>
+    <div id="userChatsList">
+      No chats to display.
+    </div>
+  <% _ -> %>
+    <div id="userChatsList">
+      <%= for chat <- @data.chats do %>
+        <div class="user-home-chats-chat" id="userChat<%= chat.id %>">
+          <span class="chatName<%= chat.id %>"><%= chat.name %></span>: Last message: <%= chat.updated_at %>
+          <%= case chat[:missed_messages] do %>
+            <% nil -> %>
+              <% :ok %>
+            <% message_count -> %>
+              <div class="user-home-chats-chat-notification"  id="chatHomeChatNotification<%= chat.id %>">
+                <%= message_count %>
+              </div>
+          <% end %>
+          <button class="button-small openChatButton" data-chat=<%= chat.id %>>Open</button>
+          <button class="button-small editChatButton" data-chat=<%= chat.id %>>Edit</button>
+          <button class="button-small leaveChatButton" data-chat=<%= chat.id %>>Leave</button>
+        </div>
+      <% end %>
+    </div>
+<% end %>

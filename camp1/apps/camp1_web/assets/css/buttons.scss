@@ -1,0 +1,151 @@
+.button,
+ button,
+{
+  background-color: $lightgrey;
+  border: 0.1rem solid $lightgrey;
+  border-radius: .4rem;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  letter-spacing: .1rem;
+  line-height: 1.4rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: "bosb";
+}
+button.button-large {
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+}
+button.button-small {
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0.3rem 0.8rem;
+}
+button.active {
+  background-color: $lightblue;
+  border-color: $lightblue;
+}
+
+.button:focus,
+ .button:hover,
+ button:focus,
+ button:hover,
+ {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #fff;
+    outline: 0
+}
+
+.button[disabled],
+ button[disabled],
+{
+    cursor: default;
+    opacity: .5
+}
+
+.button[disabled]:focus,
+ .button[disabled]:hover,
+ button[disabled]:focus,
+ button[disabled]:hover,
+ {
+   background-color: $lightlightgrey;
+   border: 0.1rem solid $lightlightgrey;
+   color: $grey;
+}
+
+.button.button-outline,
+ button.button-outline,
+{
+    background-color: transparent;
+    color: #0069d9
+}
+
+.button.button-outline:focus,
+ .button.button-outline:hover,
+ button.button-outline:focus,
+ button.button-outline:hover,
+{
+    background-color: transparent;
+    border-color: #606c76;
+    color: #606c76
+}
+
+.button.button-outline[disabled]:focus,
+ .button.button-outline[disabled]:hover,
+ button.button-outline[disabled]:focus,
+ button.button-outline[disabled]:hover,
+{
+    border-color: inherit;
+    color: #0069d9
+}
+
+.button.button-clear,
+ button.button-clear,
+{
+    background-color: transparent;
+    border-color: transparent;
+    color: #0069d9
+}
+
+.button.button-clear:focus,
+ .button.button-clear:hover,
+ button.button-clear:focus,
+ button.button-clear:hover,
+ {
+    background-color: transparent;
+    border-color: transparent;
+    color: #606c76
+}
+
+.button.button-clear[disabled]:focus,
+ .button.button-clear[disabled]:hover,
+ button.button-clear[disabled]:focus,
+ button.button-clear[disabled]:hover,
+ {
+    color: #0069d9
+}
+
+
+button.button-camp_survey,
+{
+  background-color: $lightblue;
+  border: 0.1rem solid $lightblue;
+  border-radius: .4rem;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 400;
+
+  letter-spacing: .1rem;
+  line-height: 1.4rem;
+  padding: 0.4rem 0.6rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: sans-serif ;
+}
+button.disabled-button
+{
+  background-color: $lightlightgrey;
+  border: 0.1rem solid $lightlightgrey;
+  color: $grey;
+  &:hover {
+    background-color: $lightlightgrey;
+    border: 0.1rem solid $lightlightgrey;
+  }
+}
+button.voted {
+  background-color: $lightblue;
+  border-color: $lightblue;
+  &:hover {
+    color: #606c76
+  }
+}

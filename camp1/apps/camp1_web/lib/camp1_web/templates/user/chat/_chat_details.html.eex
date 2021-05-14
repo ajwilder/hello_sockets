@@ -1,0 +1,11 @@
+<div class="chat-details" id="ChatDetails<%= @data.id %>">
+  <div>
+    Name: <%= @data.name %>
+  </div>
+  <div>
+    Members: <%= @data.member_count %>
+  </div>
+  <div>
+    latest_message: <%= @data.latest_message %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="user-home-chat-invite user-home-contacts-contact-options" id="contactListContact<%= @contact.contact_obfs_id %>">
+  <p class="chat-invite-success">
+    <%= @contact.contact_name %> successfully invited to chat.
+    <a href="/home?1=chat&2=invitations">See Chat Invites</a>
+  </p>
+</div>

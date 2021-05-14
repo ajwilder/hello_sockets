@@ -1,0 +1,8 @@
+<div id="campMainExpand" class="camp-main-expand">
+  <div class="camp-main-expand-nav">
+    <h3>Manifesto >></h3>
+    <button class="campManifestoNav <%= if @sub_menu == nil || @sub_menu == "manifesto", do: "active" %>" data-action="manifesto" data-location="campMainManifesto">Manifesto</button>
+    <button class="campManifestoNav <%= if @sub_menu == "lexicon", do: "active" %>" data-action="lexicon" data-location="campMainManifesto">Lexicon</button>
+  </div>
+  <%= render(select_manifesto_template(@sub_menu, @subsub_menu), data: @data) %>
+</div>

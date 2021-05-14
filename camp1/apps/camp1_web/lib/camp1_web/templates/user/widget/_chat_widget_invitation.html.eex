@@ -1,0 +1,12 @@
+<%= case @invitation.type do %>
+  <% :sent -> %>
+    <div class="chat-widget-invitation">
+      You Requested to Chat With <%= @invitation.user_handle %>
+    </div>
+  <% :received -> %>
+    <div class="chat-widget-invitation">
+      <%= @invitation.inviter_handle %> wants to chat with you.
+      <button class="button-small">Accept</button>
+      <button class="button-small">Decline</button>
+    </div>
+<% end %>

@@ -1,0 +1,3 @@
+<div class="user-home-chats-chat">
+  You have left chat <%= @chat_name %>
+</div>

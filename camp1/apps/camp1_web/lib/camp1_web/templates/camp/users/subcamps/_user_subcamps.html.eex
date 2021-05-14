@@ -1,0 +1,36 @@
+<%= if length(@data.camps) > 0 do %>
+<div class="camp-subcamps camp-main-expand-main " data-action="subcamps" id="campMainOverview">
+  <div class="camp-main-top">
+    <h2>Subcamps</h2>
+    <div class="camp-subcamps-top-div">
+      <div class="camp-subcamps-select">Show: <select id="subcampSortSelect">
+          <option value="newest">
+            Newest
+          </option>
+          <option value="oldest">
+            Oldest
+          </option>
+          <option value="biggest">
+            Biggest
+          </option>
+          <option  value="smallest">
+            Smallest
+          </option>
+          <option value="day">
+            Created on day:
+          </option>
+          <option  value="week">
+            Created in week:
+          </option>
+        </select>
+        <input type="date" id="subcampsSortDateInput" />
+      </div>
+    </div>
+  </div>
+  <%= render "users/subcamps/_user_subcamps_list.html", camps: @data.camps %>
+
+
+</div>
+<% else %>
+  <!-- todo form to create camp subcamps -->
+<% end %>

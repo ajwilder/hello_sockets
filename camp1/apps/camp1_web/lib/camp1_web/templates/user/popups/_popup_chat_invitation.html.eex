@@ -1,0 +1,4 @@
+
+<div class="popupMessage" id="chatInvitationPopup<%= @invitation.id %>">
+  <%= @invitation.inviter_handle %> invited you to chat<%= if @name, do: " \"#{@name}\" with #{@user_count} others" %>.  <a href="/home?1=chat&2=invitations">Respond to this request</a>
+</div>

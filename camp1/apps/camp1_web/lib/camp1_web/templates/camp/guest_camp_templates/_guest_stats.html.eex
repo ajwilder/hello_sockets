@@ -1,0 +1,14 @@
+<div class="camp-overview-stats">
+  <h2>Stats</h2>
+  <div>
+    Members: <%= @camp.camp_data.member_count %>
+  </div>
+  <div>
+    Opponents: <%= @camp.camp_data.opponent_count %>
+  </div>
+  <div>
+    Subcamps: <%= length @camp.children %>
+  </div>
+
+
+</div>

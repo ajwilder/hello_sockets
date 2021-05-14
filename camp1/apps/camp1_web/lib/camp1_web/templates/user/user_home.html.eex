@@ -1,0 +1,6 @@
+<section class="user-home">
+  <%= render("_user_nav.html", expand: @expand) %>
+  <div class="user-home-main">
+    <%= render(select_user_home_template(@expand, @sub_menu), data: @data) %>
+  </div>
+</section>

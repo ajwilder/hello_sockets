@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Camp Smith</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script>window.guestToken = "<%= assigns[:guest_token] %>"</script>
+    <%= if @conn.assigns[:channel] do %>
+      <%= case @channel do %>
+        <% :survey ->  %>
+          <script>window.guestLocation = "survey"</script>
+        <% :camp -> %>
+          <script>window.guestLocation = "camp"; window.campId = <%= @camp.id %></script>
+      <% end %>
+      <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/guest.js") %>"></script>
+    <% end %>
+  </head>
+  <body>
+    <%= render "_guest_menu.html", assigns %>
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= @inner_content %>
+    </main>
+    <%= render "_footer.html", assigns %>
+
+  </body>
+</html>
